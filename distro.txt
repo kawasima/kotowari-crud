@@ -1,0 +1,13 @@
+src/main/java/scaffold/crud/controller/UserController.java
+src/main/java/scaffold/crud/form/UserForm.java
+src/main/java/scaffold/crud/form/FormBase.java
+src/main/java/scaffold/crud/dao/UserDao.java
+src/main/resources/templates/layout/defaultLayout.ftl
+src/main/resources/templates/user/edit.ftl
+src/main/resources/templates/user/list.ftl
+src/main/resources/templates/user/new.ftl
+src/main/resources/templates/user/show.ftl
+src/main/resources/templates/parts/textfield.ftl
+src/main/resources/templates/parts/text.ftl
+src/main/resources/META-INF/scaffold/crud/dao/UserDao/selectAll.sql
+src/main/resources/META-INF/scaffold/crud/dao/UserDao/selectById.sql
