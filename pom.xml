@@ -81,8 +81,19 @@
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>sign</goal>
+                            <goal>sign-and-deploy-file</goal>
                         </goals>
+                        <configuration>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}-scaffold</artifactId>
+                            <version>${project.version}</version>
+                            <packaging>${project.packaging}</packaging>
+                            <file>${project.build.directory}/kotowari-crud-scaffold.jar</file>
+                            <repositoryId>sonatype-nexus-staging</repositoryId>
+                            <url>${project.distributionManagement.repository.url}</url>
+                            <javadoc>${project.build.directory}/kotowari-crud-${project.version}-javadoc.jar</javadoc>
+                            <pomFile>${project.basedir}/src/main/resources/scaffold-pom.xml</pomFile>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -113,22 +124,8 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>2.8.2</version>
                 <configuration>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>${project.artifactId}-scaffold</artifactId>
-                    <version>${project.version}</version>
-                    <packaging>${project.packaging}</packaging>
-                    <file>${project.build.directory}/kotowari-crud-scaffold.jar</file>
-                    <repositoryId>sonatype-nexus-staging</repositoryId>
-                    <url>${project.distributionManagement.repository.url}</url>
                     <skip>true</skip>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>deploy-remote-repository</id>
-                        <phase>deploy</phase>
-                        <goals><goal>deploy-file</goal></goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
