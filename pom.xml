@@ -6,7 +6,7 @@
     <parent>
         <groupId>net.unit8.enkan</groupId>
         <artifactId>enkan-parent</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0-beta1</version>
     </parent>
 
     <artifactId>kotowari-crud</artifactId>
@@ -19,11 +19,29 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadoc</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -56,6 +74,20 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
@@ -76,6 +108,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.8.2</version>
+                <configuration>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>${project.artifactId}-scaffold</artifactId>
+                    <version>${project.version}</version>
+                    <packaging>${project.packaging}</packaging>
+                    <file>${project.build.directory}/kotowari-crud-scaffold.jar</file>
+                    <repositoryId>sonatype-nexus-staging</repositoryId>
+                    <url>${project.distributionManagement.repository.url}</url>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>deploy-remote-repository</id>
+                        <phase>deploy</phase>
+                        <goals><goal>deploy-file</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -83,57 +137,57 @@
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-system</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-repl-pseudo</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-devel</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>kotowari</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-undertow</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-doma2</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-jackson</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-HikariCP</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-flyway</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-freemarker</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-metrics</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>0.1.0-beta1</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
