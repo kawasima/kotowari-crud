@@ -6,7 +6,7 @@
     <parent>
         <groupId>net.unit8.enkan</groupId>
         <artifactId>enkan-parent</artifactId>
-        <version>0.1.0-beta1</version>
+        <version>0.2.0</version>
     </parent>
 
     <artifactId>kotowari-crud</artifactId>
@@ -14,6 +14,21 @@
 
     <name>kotowari-crud</name>
     <description>This is scaffold base project of Kotowari CRUD application.</description>
+
+    <properties>
+        <enkan.version>0.2.0</enkan.version>
+    </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
@@ -134,79 +149,82 @@
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-system</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-repl-pseudo</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-devel</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>kotowari</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-undertow</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-doma2</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-jackson</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-HikariCP</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-flyway</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-freemarker</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>net.unit8.enkan</groupId>
             <artifactId>enkan-component-metrics</artifactId>
-            <version>0.1.0-beta1</version>
+            <version>${enkan.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.189</version>
+            <version>1.4.196</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>3.3.1</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
