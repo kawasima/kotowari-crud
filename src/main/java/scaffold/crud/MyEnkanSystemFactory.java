@@ -12,6 +12,7 @@ import enkan.component.metrics.MetricsComponent;
 import enkan.component.undertow.UndertowComponent;
 import enkan.config.EnkanSystemFactory;
 import enkan.system.EnkanSystem;
+import org.seasar.doma.jdbc.dialect.H2Dialect;
 
 import static enkan.component.ComponentRelationship.component;
 import static enkan.util.BeanBuilder.builder;
@@ -23,7 +24,9 @@ public class MyEnkanSystemFactory implements EnkanSystemFactory {
     @Override
     public EnkanSystem create() {
         return EnkanSystem.of(
-                "doma", new DomaProvider(),
+                "doma", builder(new DomaProvider())
+                        .set(DomaProvider::setDialect, new H2Dialect())
+                        .build(),
                 "jackson", new JacksonBeansConverter(),
                 "flyway", new FlywayMigration(),
                 "template", new FreemarkerTemplateEngine(),

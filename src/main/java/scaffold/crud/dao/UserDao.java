@@ -1,7 +1,6 @@
 package scaffold.crud.dao;
 
 import org.seasar.doma.*;
-import scaffold.crud.DomaConfig;
 import scaffold.crud.entity.User;
 
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * @author kawasima
  */
-@Dao(config = DomaConfig.class)
+@Dao
 public interface UserDao {
     @Select
     User selectById(Long id);

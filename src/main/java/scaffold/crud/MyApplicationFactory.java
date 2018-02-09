@@ -5,7 +5,6 @@ import enkan.application.WebApplication;
 import enkan.config.ApplicationFactory;
 import enkan.endpoint.ResourceEndpoint;
 import enkan.middleware.*;
-import enkan.middleware.devel.HttpStatusCatMiddleware;
 import enkan.middleware.devel.StacktraceMiddleware;
 import enkan.middleware.doma2.DomaTransactionMiddleware;
 import enkan.middleware.metrics.MetricsMiddleware;
@@ -16,7 +15,7 @@ import kotowari.routing.Routes;
 import scaffold.crud.controller.PartsController;
 import scaffold.crud.controller.UserController;
 
-import static enkan.util.BeanBuilder.builder;
+import static enkan.util.BeanBuilder.*;
 
 /**
  * @author kawasima
@@ -39,7 +38,6 @@ public class MyApplicationFactory implements ApplicationFactory {
         app.use(new StacktraceMiddleware());
         app.use(new TraceMiddleware<>());
         app.use(new ContentTypeMiddleware());
-        app.use(new HttpStatusCatMiddleware());
         app.use(new ParamsMiddleware());
         app.use(new MultipartParamsMiddleware());
         app.use(builder(new MethodOverrideMiddleware())
@@ -55,7 +53,7 @@ public class MyApplicationFactory implements ApplicationFactory {
         app.use(new RoutingMiddleware(routes));
         app.use(new DomaTransactionMiddleware<>());
         app.use(new FormMiddleware());
-        app.use(new ValidateFormMiddleware());
+        app.use(new ValidateBodyMiddleware<>());
         app.use(new ControllerInvokerMiddleware(injector));
 
         return app;

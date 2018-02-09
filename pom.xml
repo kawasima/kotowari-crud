@@ -6,7 +6,7 @@
     <parent>
         <groupId>net.unit8.enkan</groupId>
         <artifactId>enkan-parent</artifactId>
-        <version>0.2.0</version>
+        <version>0.6.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>kotowari-crud</artifactId>
@@ -16,7 +16,7 @@
     <description>This is scaffold base project of Kotowari CRUD application.</description>
 
     <properties>
-        <enkan.version>0.2.0</enkan.version>
+        <enkan.version>0.6.0-SNAPSHOT</enkan.version>
     </properties>
 
     <distributionManagement>
@@ -35,7 +35,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -45,10 +45,14 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
+                <version>3.0.0</version>
+                <configuration>
+                    <javadocVersion>1.5</javadocVersion>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadoc</id>
@@ -58,11 +62,13 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
+                <version>3.0.2</version>
                 <configuration>
+                    <skip>true</skip>
                     <skipIfEmpty>true</skipIfEmpty>
                 </configuration>
                 <executions>
@@ -94,7 +100,7 @@
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
-                        <phase>verify</phase>
+                        <phase>deploy</phase>
                         <goals>
                             <goal>sign-and-deploy-file</goal>
                         </goals>
